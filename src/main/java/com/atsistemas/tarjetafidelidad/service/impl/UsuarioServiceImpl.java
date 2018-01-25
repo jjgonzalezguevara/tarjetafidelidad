@@ -5,7 +5,7 @@ import java.util.List;
 import com.atsistemas.tarjetafidelidad.domain.Usuario;
 import com.atsistemas.tarjetafidelidad.service.UsuarioService;
 
-public class UserLoginServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public boolean usuarioValido(String userId, String password) {
