@@ -14,7 +14,7 @@ public class UserLoginController {
 	@RequestMapping(value = "/acceso", method = RequestMethod.GET)
 	public String accesoUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "login";
+		return "bootstrap";
 	}
 	
 	@RequestMapping(value = "/acceso", method = RequestMethod.POST)

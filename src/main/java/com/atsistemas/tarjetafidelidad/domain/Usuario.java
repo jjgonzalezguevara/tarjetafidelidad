@@ -39,9 +39,5 @@ public class Usuario implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
-	
+
 }
