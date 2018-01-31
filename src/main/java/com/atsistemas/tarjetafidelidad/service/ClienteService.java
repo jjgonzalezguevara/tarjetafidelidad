@@ -4,15 +4,17 @@ import java.util.List;
 
 import com.atsistemas.tarjetafidelidad.domain.Cliente;
 import com.atsistemas.tarjetafidelidad.domain.Usuario;
+import com.atsistemas.tarjetafidelidad.dto.UserFormDto;
 
 public interface ClienteService {
 	List<Cliente> getAllUsers();
 
-	Usuario getUser(Cliente cliente);
-
-	void addUser(Cliente cliente);
+	Cliente getCliente(int clientId);
+	
+	void addUser(UserFormDto cliente);
 
 	void deleteUser(Cliente cliente);
 	
-	long getPoints(Cliente cliente);
+	Cliente getPoints(Cliente cliente);
+	
 }

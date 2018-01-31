@@ -3,6 +3,7 @@ package com.atsistemas.tarjetafidelidad.service;
 import java.util.List;
 
 import com.atsistemas.tarjetafidelidad.domain.Usuario;
+import com.atsistemas.tarjetafidelidad.dto.UserFormDto;
 
 public interface UsuarioService {
 
@@ -10,11 +11,13 @@ public interface UsuarioService {
 
 	Usuario getUser(Usuario usuario);
 
-	void addUser(Usuario usuario);
+	void addUser(UserFormDto usuarioDto);
 
 	void deleteUser(Usuario usuario);
 	
 	Usuario getUserRol(Usuario usuario);
 	
-	public boolean usuarioValido(String userId, String password);
+	boolean usuarioValido(Usuario usuario);
+	
+	String generatePassword();
 }

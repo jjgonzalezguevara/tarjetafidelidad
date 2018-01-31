@@ -7,18 +7,27 @@ public class Usuario implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8746579243019549877L;
-	private String userId;
+	private int userId;
 	private String nombre;
 	private String userlogin;
 	private String password;
+	private String rol;
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getUserId() {
+	
+
+	public int getUserId() {
 		return userId;
 	}
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getNombre() {

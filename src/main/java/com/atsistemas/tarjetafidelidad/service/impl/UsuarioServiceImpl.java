@@ -2,15 +2,33 @@ package com.atsistemas.tarjetafidelidad.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.atsistemas.tarjetafidelidad.business.PasswordGenerator;
 import com.atsistemas.tarjetafidelidad.domain.Usuario;
+import com.atsistemas.tarjetafidelidad.domain.repository.UsuarioRepository;
+import com.atsistemas.tarjetafidelidad.dto.UserFormDto;
+import com.atsistemas.tarjetafidelidad.dto.converter.Marshall;
 import com.atsistemas.tarjetafidelidad.service.UsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
+	
+	@Autowired
+	UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	PasswordGenerator passwordGenerator;
+	
+	@Autowired
+	@Qualifier("userMarshaller")
+	Marshall<Usuario, UserFormDto> userMarshaller;
 
 	@Override
-	public boolean usuarioValido(String userId, String password) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean usuarioValido(Usuario usuario) {
+		return usuarioRepository.usuarioValido(usuario);
 	}
 
 	@Override
@@ -21,14 +39,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario getUser(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarioRepository.getUser(usuario);
 	}
 
 	@Override
-	public void addUser(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+	public void addUser(UserFormDto usuario) {
+		Usuario user = userMarshaller.unMarshall(usuario);
+		usuarioRepository.addUser(user);		
 	}
 
 	@Override
@@ -41,6 +58,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public Usuario getUserRol(Usuario usuario) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String generatePassword() {
+		return passwordGenerator.generatePasswd();
 	}
 
 }
